@@ -1,0 +1,28 @@
+import React, { useState } from 'react';
+import DisplayCountry from './DisplayCountry';
+import ShowButton from './ShowButton';
+
+const DisplayCountries = ({ countries }) => {
+    const [displays, toggleDisplay] = useState(countries.map((country) => false));
+
+    const handleClick = (i) => {
+        let newDisplay = [...displays];
+        newDisplay[i] = !newDisplay[i];
+        toggleDisplay(newDisplay);
+    };
+    return (displays.map((display, i) => {
+        return display ? (
+            <div key={countries[i].name}>
+              <DisplayCountry country={countries[i]}/>
+              <ShowButton display={displays[i]} handleClick={() => handleClick(i)}/>
+            </div>
+        ) : (
+            <div key={countries[i].name}>
+              <p key={countries[i].name}> {countries[i].name}  <ShowButton display={displays[i]} handleClick={() => handleClick(i)}/> </p>
+             
+            </div>
+        );
+    }));
+};
+
+export default DisplayCountries;

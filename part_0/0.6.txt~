@@ -1,0 +1,9 @@
+the window.onload defines an event handler for submit on a form
+
+callback function is called when form is submitted; new note
+is created and pushed onto the array of current notes;
+the form is cleared; the page is rerendered with the redrawNotes()
+function; finally a post request is made to update the json data
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server-->browser: json confirmation of note creation
